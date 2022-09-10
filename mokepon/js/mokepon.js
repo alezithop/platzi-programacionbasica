@@ -1,5 +1,7 @@
 let ataqueJugador;
 let ataqueEnemigo;
+let vidaJugador = 3;
+let vidaEnemigo = 3;
 
 function iniciarJuego() {
     let botonMascotaJugador = document.getElementById("boton-mascota");
@@ -86,23 +88,31 @@ function ataqueAleatorioEnemigo() {
 }
 
 function combate() {
-    // 1 va a ser agua, 2 va a ser agua y el 3 va a ser tierra
-    let resultado = 0;
-    if (ataqueJugador == ataqueEnemigo) {
-        crearMensaje("EMPATE. 😬");
-        resultado = 0;
-    } else if (
-        (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") ||
-        (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") ||
-        (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA")
-    ) {
-        crearMensaje("GANASTE. 🎉");
-        resultado = 1;
+    if (vidaJugador > 0 && vidaEnemigo > 0) {
+        // 1 ahora va a ser agua, 2 ahora va a ser agua y el 3 ahora va a ser tierra
+        if (ataqueJugador == ataqueEnemigo) {
+            crearMensaje("EMPATE. 😬");
+        } else if (
+            (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") ||
+            (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") ||
+            (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA")
+        ) {
+            crearMensaje("GANASTE. 🎉");
+            vidaEnemigo -= 1;
+        } else {
+            crearMensaje("PERDISTE. 😵‍💫");
+            vidaJugador -= 1;
+        }
+        actualizarVidas();
+        if (vidaEnemigo == 0) {
+            alert("La batalla ha terminado. Felicidades has ganado.");
+        }
+        if (vidaJugador == 0) {
+            alert("La batalla ha terminado. Lo harás mejor a la próxima.");
+        }
     } else {
-        crearMensaje("PERDISTE. 😵‍💫");
-        resultado = 2;
+        alert("Refresca el navegador para iniciar una nueva Batalla.");
     }
-    return resultado;
 }
 
 function crearMensaje(resultado) {
@@ -115,8 +125,16 @@ function crearMensaje(resultado) {
         ", la mascota del enemigo atacó con " +
         ataqueEnemigo +
         " - " +
-        resultado
+        resultado;
     sectionMensajes.appendChild(parrafo);
+}
+
+function actualizarVidas() {
+    let sectionVidasJugador = document.getElementById("vidas-jugador");
+    let sectionVidasEnemigo = document.getElementById("vidas-enemigo");
+
+    sectionVidasJugador.innerText = vidaJugador;
+    sectionVidasEnemigo.innerText = vidaEnemigo;
 }
 
 function aleatorio(min, max) {
