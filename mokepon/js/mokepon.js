@@ -13,6 +13,9 @@ function iniciarJuego() {
     botonAgua.addEventListener("click", ataqueAgua)
     let botonTierra = document.getElementById("boton-tierra")
     botonTierra.addEventListener("click", ataqueTierra)
+
+    let botonReiniciar = document.getElementById("boton-reiniciar")
+    botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
 function isElementChecked(element) {
@@ -113,7 +116,7 @@ function combate() {
             crearMensajeFinal()
         }
     } else {
-        alert("Refresca el navegador para iniciar una nueva Batalla.")
+        alert("Refresca el navegador o toca el botón Reiniciar para iniciar una nueva Batalla.")
     }
 }
 
@@ -131,6 +134,11 @@ function crearMensaje(resultado) {
     sectionMensajes.appendChild(parrafo)
 }
 
+function limpiarMensajes() {
+    let sectionMensajes = document.getElementById("mensajes")
+    sectionMensajes.innerHTML = ""
+}
+
 function crearMensajeFinal() {
     let sectionMensajes = document.getElementById("mensajes")
 
@@ -142,7 +150,7 @@ function crearMensajeFinal() {
         parrafo.innerText = "La batalla ha terminado. Lo harás mejor a la próxima."
     }
     sectionMensajes.appendChild(parrafo)
-    parrafo.innerText = "Refresca el navegador para iniciar una nueva Batalla."
+    parrafo.innerText = "Refresca el navegador o toca el botón Reiniciar para iniciar una nueva Batalla."
     sectionMensajes.appendChild(parrafo)
 }
 
@@ -152,6 +160,13 @@ function actualizarVidas() {
 
     sectionVidasJugador.innerText = vidaJugador
     sectionVidasEnemigo.innerText = vidaEnemigo
+}
+
+function reiniciarJuego() {
+    vidaJugador = 3
+    vidaEnemigo = 3
+    actualizarVidas()
+    limpiarMensajes()
 }
 
 function aleatorio(min, max) {
