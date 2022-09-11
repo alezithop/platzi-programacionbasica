@@ -152,6 +152,13 @@ function crearMensajeFinal() {
     sectionMensajes.appendChild(parrafo)
     parrafo.innerText = "Refresca el navegador o toca el botón Reiniciar para iniciar una nueva Batalla."
     sectionMensajes.appendChild(parrafo)
+
+    let botonFuego = document.getElementById("boton-fuego")
+    botonFuego.disabled = true
+    let botonAgua = document.getElementById("boton-agua")
+    botonAgua.disabled = true
+    let botonTierra = document.getElementById("boton-tierra")
+    botonTierra.disabled = true
 }
 
 function actualizarVidas() {
@@ -167,6 +174,14 @@ function reiniciarJuego() {
     // vidaEnemigo = 3
     // actualizarVidas()
     // limpiarMensajes()
+    
+    // let botonFuego = document.getElementById("boton-fuego")
+    // botonFuego.disabled = false
+    // let botonAgua = document.getElementById("boton-agua")
+    // botonAgua.disabled = false
+    // let botonTierra = document.getElementById("boton-tierra")
+    // botonTierra.disabled = false
+
     location.reload()
 }
 
