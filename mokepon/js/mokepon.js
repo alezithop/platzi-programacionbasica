@@ -163,10 +163,11 @@ function actualizarVidas() {
 }
 
 function reiniciarJuego() {
-    vidaJugador = 3
-    vidaEnemigo = 3
-    actualizarVidas()
-    limpiarMensajes()
+    // vidaJugador = 3
+    // vidaEnemigo = 3
+    // actualizarVidas()
+    // limpiarMensajes()
+    location.reload()
 }
 
 function aleatorio(min, max) {
