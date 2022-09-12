@@ -4,9 +4,13 @@ let vidaJugador = 3
 let vidaEnemigo = 3
 
 function iniciarJuego() {
+    let seccionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
+    seccionSeleccionarAtaque.style.display = 'none'
     let botonMascotaJugador = document.getElementById("boton-mascota")
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
-
+    let seccionReiniciar = document.getElementById("reiniciar")
+    seccionReiniciar.style.display = 'none'
+    
     let botonFuego = document.getElementById("boton-fuego")
     botonFuego.addEventListener("click", ataqueFuego)
     let botonAgua = document.getElementById("boton-agua")
@@ -38,6 +42,10 @@ function seleccionarMascotaJugador() {
     }
     if (mascotaSeleccionada != "") {
         spanMascotaJugador.innerHTML = mascotaSeleccionada
+        let seccionMascota = document.getElementById("seleccionar-mascota")
+        seccionMascota.style.display = 'none'
+        let seccionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
+        seccionSeleccionarAtaque.style.display = 'block'
     } else {
         alert("Ponte vergas. Selecciona una mascota.")
     }
@@ -141,13 +149,16 @@ function limpiarMensajes() {
 
 function crearMensajeFinal() {
     let sectionMensajes = document.getElementById("mensajes")
+    let seccionReiniciar = document.getElementById("reiniciar")
 
     let parrafo = document.createElement("p")
     if (vidaEnemigo == 0) {
         parrafo.innerText = "La batalla ha terminado. Felicidades has ganado."
+        seccionReiniciar.style.display = 'block'
     }
     if (vidaJugador == 0) {
         parrafo.innerText = "La batalla ha terminado. Lo harás mejor a la próxima."
+        seccionReiniciar.style.display = 'block'
     }
     sectionMensajes.appendChild(parrafo)
     parrafo.innerText = "Refresca el navegador o toca el botón Reiniciar para iniciar una nueva Batalla."
