@@ -9,3 +9,9 @@ https://cssreference.io
 
 HTML color codes
 https://htmlcolorcodes.com/es/
+
+CSS Tricks
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+Display flex es solo para elementos padre.
+
