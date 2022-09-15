@@ -25,3 +25,13 @@
 input {
     display: none;
 }
+
+#boton-mascota {
+    width: 130px;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    background-color: rgb(245, 245, 245);
+    border: 3px dashed rgb(4, 110, 231);
+}
